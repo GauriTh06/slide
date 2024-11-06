@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slideshow</title>
+    <style>
+      body{
+        background-image: url("img/cakebg.jpg");
+        background-size: cover;
+      }
+      h1{
+        text-align: center;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      .container {
+        width: fit-content;
+        margin: 50px auto;
+        position: relative;
+      }
+
+      .slide {
+        height: 600px;
+        width: 1000px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .icons-action {
+        height: 80px;
+        position: absolute;
+        top: 40%;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+
+      .icons-prev {
+        left: 0;
+      }
+
+      .icons-prev:hover {
+        transform: scale(0.8) translateX(-10px);
+      }
+
+      .icons-next {
+        right: 0;
+      }
+
+      .icons-next:hover {
+        transform: scale(0.8) translateX(10px);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bakery Delights</h1>
+    <div class="container">
+      <img src="img/brownie.jpg" class="slide" id="slide" />
+
+      <img src="img/previous.png" class="icons-action icons-prev" onclick="prev()" />
+      <img src="img/next.png" class="icons-action icons-next" onclick="next()" />
+    </div>
+
+    <script>
+      const images = [
+        "img/brownie.jpg",
+        "img/cake.jpg",
+        "img/cookie.jpg",
+        "img/crossiant.jpg",
+        "img/cupcake.jpg",
+        "img/donut.jpg",
+        "img/jar-cake.jpg",
+        "img/pastry.jpg"
+      ];
+
+      let index = 0;
+      const slide = document.getElementById("slide");
+
+      function next() {
+        if (index < images.length - 1) {
+          index++;
+        } else {
+          index = 0;
+        }
+
+        slide.src = images[index];
+      }
+
+      function prev() {
+        if (index > 0) {
+          index--;
+        } else {
+          index = images.length - 1;
+        }
+
+        slide.src = images[index];
+      }
+    </script>
+  </body>
+</html>
